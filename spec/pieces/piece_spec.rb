@@ -56,5 +56,18 @@ module Chess
         expect(piece.to_s).to eql "\u263A"
       end
     end
+
+    context "#moved?" do
+      it "returns false when it is initialized" do
+        piece = Piece.new([0, 0], 'red')
+        expect(piece.moved?).to eql false
+      end
+
+      it "returns true when it's position is changed once" do
+        piece = Piece.new([0, 0], 'red')
+        piece.update_position([1, 2])
+        expect(piece.moved?).to eql true
+      end
+    end
   end
 end

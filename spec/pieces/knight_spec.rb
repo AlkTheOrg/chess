@@ -63,5 +63,18 @@ module Chess
         expect(knight.to_s).to eql "\u2658"
       end
     end
+
+    context "#moved?" do
+    it "returns false when it is initialized" do
+      knight = Knight.new([0, 0], 'red')
+      expect(knight.moved?).to eql false
+    end
+
+    it "returns true when it's position is changed once" do
+      knight = Knight.new([0, 0], 'red')
+      knight.update_position([1, 2])
+      expect(knight.moved?).to eql true
+    end
+  end
   end
 end

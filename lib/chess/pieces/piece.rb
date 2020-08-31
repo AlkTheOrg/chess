@@ -7,6 +7,7 @@ module Chess
       @color = color
       update_possible_moves
       init_value
+      @moved = false
     end
 
     def update_possible_moves
@@ -21,10 +22,15 @@ module Chess
       @pos_x = position[0]
       @pos_y = position[1]
       update_possible_moves
+      @moved = true
     end
 
     def white?
       @color == 'white'
+    end
+
+    def moved?
+      @moved
     end
 
     def to_s
