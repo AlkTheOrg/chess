@@ -6,11 +6,15 @@ module Chess
       @pos_y = position[1]
       @color = color
       update_possible_moves
-      @value = color == 'white' ? "\u263A" : "\u263B"
+      init_value
     end
 
     def update_possible_moves
       @possible_moves = []
+    end
+
+    def init_value
+      @value = color == 'white' ? "\u263A" : "\u263B"
     end
 
     def update_position(position)
