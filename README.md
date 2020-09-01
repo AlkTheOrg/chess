@@ -1,24 +1,21 @@
 # Chess
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/chess`. To experiment with that code, run `bin/console` for an interactive prompt.
+This is a basic Chess game that is played in the terminal.
 
-TODO: Delete this and the text above, and describe your gem
+## Pre-Project Thoughts
+- As I'm already familiar with the rules of chess, It is going to save a lot of time, but there are some question marks that I should think about such as;
+    > Should `Piece` objects return some possible movements from a given position as if the board is empty and then `Board` should eliminate illegal moves with checking the board? Or, should `Board` itself be responsible from calculating the possible moves from zero? The first one sounded better before, but after thinking about what if the board is not 8x8? There are examples of other kind of chess boards so with the letter, I believe `Piece` classes will be more reusable. Still not sure, will do some googling about this.
+- I only started implementing `Piece` classes and added a method `moved?` which returns false it the piece hasn't moved since the beginning of the game so it should be easy to check `en_passant` and `castle` kind of methods.
+- Implementing `king_in_check?` doesn't sound hard, but I'm not sure about the `king_forked?` situations.
+- I thought about using a 10x10 board to allign board output better, but I decided that using a 8x8 board should be more trivial.
+- I also will do a basic AI at the end. It'll be a DFS of course, probably in depth of 20, but I'm not sure about how the score of the board should be updated and after that how should the computer decide which move to play. Only thing that I know at the moment is that, [relative piece values](https://en.wikipedia.org/wiki/Chess_piece_relative_value) will be used, but no idea about how to decide the strength and rate the current position of the game. Will think about these at the end, but I'm not trying to make stockfish on my own anyways.
+
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'chess'
+```sh
+$ cd to_location_where_you_want_this_project_folder_to_be
+$ git clone https://github.com/AlkTheOrg/chess
 ```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install chess
 
 ## Usage
 
@@ -26,19 +23,12 @@ TODO: Write usage instructions here
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+TODO
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/chess. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/chess/blob/master/CODE_OF_CONDUCT.md).
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/AlkTheOrg/chess. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/AlkTheOrg/chess/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the Chess project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/chess/blob/master/CODE_OF_CONDUCT.md).
