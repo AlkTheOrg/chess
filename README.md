@@ -8,7 +8,7 @@ As I'm already familiar with the rules of chess, It is going to save a lot of ti
 - I only started implementing `Piece` classes and added a method `moved?` which returns false it the piece hasn't moved since the beginning of the game so it should be easy to check `en_passant` and `castle` kind of methods.
 - Implementing `king_in_check?` doesn't sound hard, but I'm not sure about the `king_forked?` situations.
 - I thought about using a 10x10 board to allign board output better, but I decided that using a 8x8 board should be more trivial.
-- I also will do a basic AI at the end. It'll be a DFS of course, probably in depth of 20, but I'm not sure about how the score of the board should be updated and after that how should the computer decide which move to play. Only thing that I know at the moment is that, [relative piece values](https://en.wikipedia.org/wiki/Chess_piece_relative_value) will be used, but no idea about how to decide the strength and rate the current position of the game. Will think about these at the end, but I'm not trying to make stockfish on my own anyways.
+- I also will make a basic AI at the end. It'll be a DFS of course, probably in depth of 20, but I'm not sure about how the score of the board should be updated and after that how should the computer decide which move to play. Only thing that I know at the moment is that, [relative piece values](https://en.wikipedia.org/wiki/Chess_piece_relative_value) will be used, but no idea about how to decide the strength and rate the current position of the game. Will think about these at the end, but I'm not trying to make stockfish anyways.
 
 
 ## Installation
