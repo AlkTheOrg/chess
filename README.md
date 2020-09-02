@@ -3,8 +3,8 @@
 This is a basic Chess game that is played in the terminal.
 
 ## Pre-Project Thoughts
-- As I'm already familiar with the rules of chess, It is going to save a lot of time, but there are some question marks that I should think about such as;
-    > Should `Piece` objects return some possible movements from a given position as if the board is empty and then `Board` should eliminate illegal moves with checking the board? Or, should `Board` itself be responsible from calculating the possible moves from zero? The first one sounded better before, but after thinking about what if the board is not 8x8? There are examples of other kind of chess boards so with the letter, I believe `Piece` classes will be more reusable. Still not sure, will do some googling about this.
+As I'm already familiar with the rules of chess, It is going to save a lot of time, but there are some question marks that I should think about such as;
+- How and where should I implement the methods of `possible_moves_pieceType` kind of methods.
 - I only started implementing `Piece` classes and added a method `moved?` which returns false it the piece hasn't moved since the beginning of the game so it should be easy to check `en_passant` and `castle` kind of methods.
 - Implementing `king_in_check?` doesn't sound hard, but I'm not sure about the `king_forked?` situations.
 - I thought about using a 10x10 board to allign board output better, but I decided that using a 8x8 board should be more trivial.
