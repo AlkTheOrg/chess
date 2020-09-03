@@ -39,6 +39,21 @@ module Chess
       end
     end
 
+    context "#undo_move" do
+      it "raises an error if the piece hadn't moved before" do
+        piece = Piece.new([0, 0])
+        expect { piece.undo_move }.to raise_error
+      end
+
+      it "turns the piece back to the position before if it moved at least once" do
+        piece = Piece.new([0, 6])
+        piece.do_move(5, 3)
+        piece.undo_move
+        expect(piece.pos_x).to eql 0
+        expect(piece.pos_y).to eql 6
+      end
+    end
+
     context "#white?" do
       it "returns true if the color of the piece equals 'white'" do
         piece = Piece.new([0, 0])

@@ -14,10 +14,18 @@ module Chess
       @unicode_value = color == 'white' ? "\u263A" : "\u263B"
     end
 
-    def do_move(row, col)
-      @pos_x = row
-      @pos_y = col
-      @moved = true
+    def do_move(row, column)
+      unless moved?
+        @moved = true
+        @history_x = []; @history_y = []
+      end
+      move_to(row, column)
+    end
+
+    def undo_move
+      raise "Already in initial position" if no_history
+      @pos_x = @history_x.pop
+      @pos_y = @history_y.pop
     end
 
     def white?
@@ -30,6 +38,20 @@ module Chess
     
     def to_s
       @unicode_value
+    end
+
+    private
+
+    # pushes the old position to history first and then updates the curernt pos.
+    def move_to(row, column)
+      @history_x.push(@pos_x)
+      @history_y.push(@pos_y)
+      @pos_x = row
+      @pos_y = column
+    end
+
+    def no_history
+      @history_x.nil? || @history_x.empty?
     end
   end
 end
