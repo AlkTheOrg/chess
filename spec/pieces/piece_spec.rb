@@ -17,22 +17,23 @@ module Chess
         piece = Piece.new([0, 0], 'black')
         expect(piece.pos_x).to eql 0
         expect(piece.pos_y).to eql 0
-        expect(piece.value).to eql "\u263B"
+        expect(piece.unicode_value).to eql "\u263B"
         expect(piece.color).to eql 'black'
+        expect(piece.value).to eql 0
       end
     end
 
-    context "#update_possible_moves" do
-      it "sets the possible move array empty as piece itself is an unknown piece" do
-        piece = Piece.new([0, 0])
-        expect(piece.possible_moves).to eql []
-      end
-    end
+    # context "#update_possible_moves" do
+    #   it "sets the possible move array empty as piece itself is an unknown piece" do
+    #     piece = Piece.new([0, 0])
+    #     expect(piece.possible_moves).to eql []
+    #   end
+    # end
 
-    context "#update_position" do
+    context "#do_move" do
       it "updates the x and y values of the piece" do
         piece = Piece.new([0, 0])
-        piece.update_position([5, 3])
+        piece.do_move(5, 3)
         expect(piece.pos_x).to eql 5
         expect(piece.pos_y).to eql 3
       end
@@ -51,7 +52,7 @@ module Chess
     end
 
     context "#to_s" do
-      it "returns the value of the piece" do
+      it "returns the unicode_value of the piece" do
         piece = Piece.new([0, 0])
         expect(piece.to_s).to eql "\u263A"
       end
@@ -65,7 +66,7 @@ module Chess
 
       it "returns true when it's position is changed once" do
         piece = Piece.new([0, 0], 'red')
-        piece.update_position([1, 2])
+        piece.do_move(1, 2)
         expect(piece.moved?).to eql true
       end
     end

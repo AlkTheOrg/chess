@@ -1,27 +1,22 @@
 module Chess
   class Piece
-    attr_reader :pos_x, :pos_y, :color, :possible_moves, :value
+    attr_reader :pos_x, :pos_y, :color, :unicode_value, :value
     def initialize(position, color = 'white')
       @pos_x = position[0]
       @pos_y = position[1]
       @color = color
-      update_possible_moves
-      init_value
+      init_unicode_value # unicode_value to represent in the terminal
       @moved = false
+      @value = 0 # Undefined piece does not have a relative piece value.
     end
 
-    def update_possible_moves
-      @possible_moves = []
+    def init_unicode_value
+      @unicode_value = color == 'white' ? "\u263A" : "\u263B"
     end
 
-    def init_value
-      @value = color == 'white' ? "\u263A" : "\u263B"
-    end
-
-    def update_position(position)
-      @pos_x = position[0]
-      @pos_y = position[1]
-      update_possible_moves
+    def do_move(row, col)
+      @pos_x = row
+      @pos_y = col
       @moved = true
     end
 
@@ -32,9 +27,9 @@ module Chess
     def moved?
       @moved
     end
-
+    
     def to_s
-      @value
+      @unicode_value
     end
   end
 end

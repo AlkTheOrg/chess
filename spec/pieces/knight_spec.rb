@@ -16,34 +16,35 @@ module Chess
         knight = Knight.new([0, 0], 'black')
         expect(knight.pos_x).to eql 0
         expect(knight.pos_y).to eql 0
-        expect(knight.value).to eql "\u265E"
+        expect(knight.unicode_value).to eql "\u265E"
         expect(knight.color).to eql 'black'
+        expect(knight.value).to eql 3
       end
     end
 
-    context "#update_position" do
+    context "#do_move" do
       it "updates the x and y values of the piece" do
         knight = Knight.new([0, 0])
-        knight.update_position([5, 3])
+        knight.do_move(5, 3)
         expect(knight.pos_x).to eql 5
         expect(knight.pos_y).to eql 3
       end
     end
 
-    context "#update_possible_moves" do
-      it "updates the possible moves by default on initialization" do
-        knight = Knight.new([0, 0])
-        expect(knight.possible_moves).
-          to eql [[2, 1], [1, 2], [-1, 2], [-2, 1], [-2, -1], [-1, -2], [1, -2], [2, -1]]
-      end
+    # context "#update_possible_moves" do
+    #   it "updates the possible moves by default on initialization" do
+    #     knight = Knight.new([0, 0])
+    #     expect(knight.possible_moves).
+    #       to eql [[2, 1], [1, 2], [-1, 2], [-2, 1], [-2, -1], [-1, -2], [1, -2], [2, -1]]
+    #   end
 
-      it "updates the possible moves after each #update_position" do
-        knight = Knight.new([0, 0])
-        knight.update_position([2, 1])
-        expect(knight.possible_moves).
-          to eql [[4, 2], [3, 3], [1, 3], [0, 2], [0, 0], [1, -1], [3, -1], [4, 0]]
-      end
-    end
+    #   it "updates the possible moves after each #do_move" do
+    #     knight = Knight.new([0, 0])
+    #     knight.do_move([2, 1])
+    #     expect(knight.possible_moves).
+    #       to eql [[4, 2], [3, 3], [1, 3], [0, 2], [0, 0], [1, -1], [3, -1], [4, 0]]
+    #   end
+    # end
 
     context "#white?" do
       it "returns true if the color of the piece equals 'white'" do
@@ -58,7 +59,7 @@ module Chess
     end
 
     context "#to_s" do
-      it "returns the value of the piece" do
+      it "returns the unicode_value of the piece" do
         knight = Knight.new([0, 0])
         expect(knight.to_s).to eql "\u2658"
       end
@@ -72,7 +73,7 @@ module Chess
 
     it "returns true when it's position is changed once" do
       knight = Knight.new([0, 0], 'red')
-      knight.update_position([1, 2])
+      knight.do_move(1, 2)
       expect(knight.moved?).to eql true
     end
   end
