@@ -10,5 +10,10 @@ module Chess
     def init_unicode_value
       @unicode_value = color == 'white' ? "\u2657" : "\u265D"
     end
+
+    def get_possible_moves(board)
+      moves = []
+      
+    end
   end
 end

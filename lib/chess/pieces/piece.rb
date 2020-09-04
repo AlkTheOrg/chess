@@ -1,3 +1,4 @@
+require_relative '../board.rb'
 module Chess
   class Piece
     attr_reader :pos_x, :pos_y, :color, :unicode_value, :value
@@ -38,6 +39,18 @@ module Chess
     
     def to_s
       @unicode_value
+    end
+
+    # Returns valid piece moves. It checks by the rules of the each piece,
+      # so it only checks a valid 'piece' movement, doesnt care if the piece is pinned
+      # or king is already in check etc.
+    def get_possible_moves(board)
+      raise "This is an invalid piece so it hasn't got any possible moves"
+    end
+
+    def same_color_with?(other_piece)
+      raise "Not a piece" unless other_piece.is_a?(Piece)
+      @color == other_piece.color
     end
 
     private
