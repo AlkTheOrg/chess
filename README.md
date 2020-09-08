@@ -4,30 +4,54 @@ This is a basic Chess game that is played in the terminal.
 
 ## Pre-Project Thoughts
 As I'm already familiar with the rules of chess, It is going to save a lot of time, but there are some question marks that I should think about such as;
-- How and where should I implement the methods of `possible_moves_pieceType` kind of methods.
+- How and where should I implement `possible_moves_pieceType` kind of methods.
 - I only started implementing `Piece` classes and added a method `moved?` which returns false it the piece hasn't moved since the beginning of the game so it should be easy to check castling.
-- Implementing `king_in_check?` doesn't sound hard, but I'm not sure about the `king_xrayed?` kind of situations.
+- Implementing `king_in_check?` doesn't sound hard, but I'm not sure about the `piece_pinned?` kind of situations.
 - I thought about using a 10x10 board to allign board output better, but I decided that using a 8x8 board should be more trivial.
-- I also will make a basic AI at the end. It'll be a DFS of course, probably in depth of 20, but I'm not sure about how the score of the board should be updated and after that how should the computer decide which move to play. Only thing that I know at the moment is that, [relative piece values](https://en.wikipedia.org/wiki/Chess_piece_relative_value) will be used, but no idea about how to decide the strength and rate the current position of the game. Will think about these at the end, but I'm not trying to make stockfish anyways.
+- I will also make a basic AI at the end.
 
 
 ## Installation
+Clone the repo and then
 ```sh
-$ cd to_location_where_you_want_this_project_folder_to_be
-$ git clone https://github.com/AlkTheOrg/chess
+$ cd path/to/chess
+$ ruby example/open_game.rb 
 ```
+Or just use `menu.rb` to launch main menu with any method you want (irb, pry etc.)
 
 ## Usage
+Read After-Project Thoughts first before using as I hadn't implemented all of the chess features.
+- Load game (there are 2 games that I saved for you: white_to_mate_in_one, white_to_stalemate) or start a new game
+- Choose a square until it has a piece that belongs to the current player and has legal moves. Game will ask you again until it is a valid square.
+- Game will print you the legal moves of that piece. Choose one of them.
+- Repeat until game is over or you want to stop playing.
+- In main menu you can save your game or load game and then play/quit.
 
-TODO: Write usage instructions here
+### Mate
+![mate_1](/pngs/mate_1.png)
 
-## Development
+![mate_2](/pngs/mate_2.png)
 
-TODO
+![mate_3](/pngs/mate_3.png)
 
-## Contributing
+![mate_4](/pngs/mate_4.png)
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/AlkTheOrg/chess. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/AlkTheOrg/chess/blob/master/CODE_OF_CONDUCT.md).
+### Stalemate
+![stalemate_1](/pngs/stalemate_1.png)
+
+![stalemate_2](/pngs/stalemate_2.png)
+
+![stalemate_3](/pngs/stalemate_3.png)
+
+#### Legality Checks
+![legalities](/pngs/legalities.png)
+
+## Development and After-Project Thoughts
+
+- So the game was much smaller than I expected, but letting the only serious question (how and where to implement `possible_moves_pieceType`, `legal_moves_of(Piece)` kind of methods) unanswered left me with a bad design. 
+- TDD was going great at first, but then not being sure about the design made me focus on just implementation and then coupling and more bugs came in.
+- As you can see above, it works fine, but I'm not happy about the fact that some classes are coupled to each other. 
+- I hadn't implemented `castling`, `en-passant`, `draw?`, `Simple_AI`. Because I will do it with a better design in the future and hopefully with a GUI.
 
 ## License
 
