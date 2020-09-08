@@ -31,21 +31,6 @@ module Chess
       end
     end
 
-    # context "#update_possible_moves" do
-    #   it "updates the possible moves by default on initialization" do
-    #     knight = Knight.new([0, 0])
-    #     expect(knight.possible_moves).
-    #       to eql [[2, 1], [1, 2], [-1, 2], [-2, 1], [-2, -1], [-1, -2], [1, -2], [2, -1]]
-    #   end
-
-    #   it "updates the possible moves after each #do_move" do
-    #     knight = Knight.new([0, 0])
-    #     knight.do_move([2, 1])
-    #     expect(knight.possible_moves).
-    #       to eql [[4, 2], [3, 3], [1, 3], [0, 2], [0, 0], [1, -1], [3, -1], [4, 0]]
-    #   end
-    # end
-
     context "#white?" do
       it "returns true if the color of the piece equals 'white'" do
         knight = Knight.new([0, 0])

@@ -1,5 +1,3 @@
-require_relative './piece.rb'
-require 'pry'
 module Chess
   class Bishop < Piece
     def initialize(position, color = 'white')
@@ -9,11 +7,6 @@ module Chess
 
     def init_unicode_value
       @unicode_value = color == 'white' ? "\u2657" : "\u265D"
-    end
-
-    def get_possible_moves(board)
-      moves = []
-      
     end
   end
 end

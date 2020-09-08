@@ -1,5 +1,3 @@
-require_relative './piece.rb'
-require 'pry'
 module Chess
   class Rook < Piece
     def initialize(position, color = 'white')

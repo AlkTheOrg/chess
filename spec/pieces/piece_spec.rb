@@ -86,22 +86,15 @@ module Chess
       end
     end
 
-    context "#same_color_with?(other_piece)" do
-      it "raises an error if the other_piece is not a Piece object" do
-        piece = Piece.new([0, 0], 'white')
-        expect { piece.same_color_with?('white') }.to raise_error
+    context "#color_is?(color)" do
+      it "returns true if the color parameter equals piece's color" do
+        piece = Piece.new([0, 0])
+        expect(piece.color_is?('white')).to eql true
       end
 
-      it "returns true if the other_piece's color is same with the piece's color" do
-        piece1 = Piece.new([0, 0], 'white')
-        piece2 = Piece.new([5, 12])
-        expect(piece1.same_color_with?(piece2)).to eql true
-      end
-
-      it "returns false if the other_piece's color is not same with the piece's color" do
-        white_piece = Piece.new([0, 12])
-        black_piece = Piece.new([4, 4], 'black')
-        expect(white_piece.same_color_with?(black_piece)).to eql false
+      it "returns false if the color parameter doesnt equal piece's color" do
+        piece = Piece.new([0, 0])
+        expect(piece.color_is?('black')).to eql false
       end
     end
   end
