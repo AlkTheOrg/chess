@@ -48,7 +48,7 @@ Read After-Project Thoughts first before using as I hadn't implemented all of th
 
 ## Development and After-Project Thoughts
 
-- So the game was much smaller than I expected, but letting the only serious question (how and where to implement `possible_moves_pieceType`, `legal_moves_of(Piece)` kind of methods) unanswered left me with a bad design. 
+- So the game was much smaller than I expected and logic behind methods were easy, but letting the only serious question (how and where to implement `possible_moves_pieceType`, `legal_moves_of(Piece)` kind of methods) unanswered left me with a bad design. 
 - TDD was going great at first, but then not being sure about the design made me focus on just implementation and then coupling and more bugs came in.
 - As you can see above, it works fine, but I'm not happy about the fact that some classes are coupled to each other. 
 - I hadn't implemented `castling`, `en-passant`, `draw?`, `Simple_AI`. Because I will do it with a better design in the future and hopefully with a GUI.
